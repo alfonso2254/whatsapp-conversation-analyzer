@@ -7,6 +7,18 @@ export function createBot() {
   if (!token) throw new Error('TELEGRAM_BOT_TOKEN no configurado en .env');
 
   botInstance = new TelegramBot(token, { polling: true });
+
+  // Registrar comandos visibles en el menú "/" de Telegram
+  botInstance.setMyCommands([
+    { command: 'status',     description: 'Estado del proyecto (últimas 24h)' },
+    { command: 'analizar',   description: 'Forzar análisis ahora' },
+    { command: 'chat',       description: 'Pregúntale a la IA (ej: /chat ¿quién bloquea?)' },
+    { command: 'mensajes',   description: 'Últimos mensajes del grupo (ej: /mensajes 20)' },
+    { command: 'contactos',  description: 'Ver alias de contactos guardados' },
+    { command: 'alias',      description: 'Asignar nombre (ej: /alias 521234 Luis)' },
+    { command: 'ayuda',      description: 'Mostrar todos los comandos' },
+  ]).catch(err => console.warn('No se pudieron registrar comandos en Telegram:', err.message));
+
   console.log('✅ Telegram bot iniciado (polling)');
   return botInstance;
 }

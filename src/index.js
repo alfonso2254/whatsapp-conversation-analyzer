@@ -8,7 +8,7 @@ import { startScheduler } from './scheduler/analyzer.js';
 console.log('🚀 Iniciando WhatsApp Conversation Analyzer...\n');
 
 // Validar variables de entorno obligatorias
-const REQUIRED_VARS = ['TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'KIMI_API_KEY'];
+const REQUIRED_VARS = ['TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'DEEPSEEK_API_KEY'];
 const missing = REQUIRED_VARS.filter(k => !process.env[k]);
 
 if (missing.length > 0) {

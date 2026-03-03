@@ -13,8 +13,9 @@ mkdirSync(DATA_DIR, { recursive: true });
 const adapter = new JSONFile(DB_PATH);
 
 const defaultData = {
-  messages:  [],
-  analyses:  [],
+  messages:    [],
+  analyses:    [],
+  contacts:    {},   // { [jidNumber]: displayName }
   _idCounters: { messages: 0, analyses: 0 },
 };
 

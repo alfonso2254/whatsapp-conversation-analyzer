@@ -1,6 +1,6 @@
 import cron from 'node-cron';
-import { getMessagesSince, getLastAnalysis, saveAnalysis } from '../database/queries.js';
-import { analyzeConversation, extractUrgency } from '../ai/kimi.js';
+import { getMessagesSince, getLastAnalysis, saveAnalysis, enrichWithNames } from '../database/queries.js';
+import { analyzeConversation, extractUrgency } from '../ai/deepseek.js';
 import { sendTelegramMessage } from '../telegram/bot.js';
 import { getTargetGroupJid } from '../whatsapp/client.js';
 
@@ -36,12 +36,12 @@ async function runScheduledAnalysis() {
     return;
   }
 
-  console.log(`📊 Analizando ${messages.length} mensaje(s) con Kimi...`);
+  console.log(`📊 Analizando ${messages.length} mensaje(s) con DeepSeek...`);
 
-  const analysis = await analyzeConversation(messages);
+  const analysis = await analyzeConversation(enrichWithNames(messages));
 
   if (!analysis) {
-    console.warn('⚠️  Kimi no devolvió análisis.');
+    console.warn('⚠️  DeepSeek no devolvió análisis.');
     return;
   }
 
