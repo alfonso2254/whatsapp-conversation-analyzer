@@ -1,0 +1,23 @@
+{
+  "name": "whatsapp-conversation-analyzer",
+  "version": "1.0.0",
+  "description": "Bot que escucha un grupo de WhatsApp y analiza conversaciones con Kimi IA, notificando el estado por Telegram",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "sync": "node src/scripts/sync.js",
+    "sync:reset": "node src/scripts/sync.js --reset"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.16",
+    "dotenv": "^16.4.5",
+    "lowdb": "^7.0.1",
+    "node-cron": "^3.0.3",
+    "node-telegram-bot-api": "^0.66.0",
+    "openai": "^4.52.7",
+    "pino": "^9.3.2",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
